@@ -2,24 +2,31 @@ import './global.css'
 import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
-import { Navbar } from './components/nav'
+import { Navbar } from './components/nav/nav'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import Footer from './components/footer'
-import { baseUrl } from './sitemap'
+import Footer from './components/footer/footer'
+import {baseUrl} from "./const/const";
+import { Reenie_Beanie } from 'next/font/google'
+
+const reenieBeanie = Reenie_Beanie({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-reenie',
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Next.js Portfolio Starter',
-    template: '%s | Next.js Portfolio Starter',
+  default: '🌸 Federica Di Vincenzo | FE Developer',
+    template: 'Federica Di Vincenzo | FE Developer',
   },
-  description: 'This is my portfolio.',
+  description: 'Federica Di Vincenzo portfolio',
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
+    title: 'Federica Di Vincenzo portfolio',
+    description: 'Federica Di Vincenzo portfolio.',
     url: baseUrl,
-    siteName: 'My Portfolio',
+    siteName: 'Federica Di Vincenzo portfolio',
     locale: 'en_US',
     type: 'website',
   },
@@ -49,7 +56,8 @@ export default function RootLayout({
       className={cx(
         'text-black bg-white dark:text-white dark:bg-black',
         GeistSans.variable,
-        GeistMono.variable
+        GeistMono.variable,
+          reenieBeanie.variable
       )}
     >
       <body className="antialiased max-w-6xl mx-4 mt-8 lg:mx-auto">

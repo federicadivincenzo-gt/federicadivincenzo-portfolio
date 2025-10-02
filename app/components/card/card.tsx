@@ -1,15 +1,30 @@
 import React from "react";
 
-export default function Card({children, corner = null, spanCol, spanRow, style}: {children: React.ReactNode, corner?: string | null, spanCol?: number, spanRow?: number}) {
-    const spanColClass = spanCol ? `lg:col-span-${spanCol}` : '1';
-    const spanRowClass = spanRow ? `lg:row-span-${spanRow}` : '1';
+type CardProps = {
+    children: React.ReactNode;
+    corner?: 't' | 'b' | 'l' | 'r' | 'tl' | 'tr' | 'bl' | 'br' | 'none' | null;
+    spanCol?: number;
+    spanRow?: number;
+    styles?: string;
+}
+
+const cornerClasses: Record<string, string> = {
+    topLeft: 'lg:rounded-tl-[2rem]',
+    topRight: 'lg:rounded-tr-[2rem]',
+    bottomLeft: 'lg:rounded-bl-[2rem]',
+    bottomRight: 'lg:rounded-br-[2rem]',
+};
+
+export default function Card({ children, corner = null, styles }: CardProps) {
+    const cornerClass = corner ? cornerClasses[corner] : '';
+
     return (
-        <div className={`relative ${spanColClass}  ${spanRowClass}`}>
-            <div className={`absolute inset-px rounded-lg bg-white lg:rounded-${corner}-[2rem]`}></div>
-            <div className={`relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-${corner}-[calc(2rem+1px)]`}>
+        <div className={`${styles ? styles : ''}`}>
+            <div className={`inset-px rounded-lg bg-white ${cornerClass}`}></div>
+            <div className={`relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] ${cornerClass}`}>
                 {children}
             </div>
-            <div className={`pointer-events-none absolute inset-px rounded-lg ring-1 shadow-sm ring-black/5 lg:rounded-${corner}-[2rem]`}></div>
+            <div className={`pointer-events-none absolute inset-px rounded-lg ring-1 shadow-sm ring-black/5 ${cornerClass}`}></div>
         </div>
-    )
+    );
 }

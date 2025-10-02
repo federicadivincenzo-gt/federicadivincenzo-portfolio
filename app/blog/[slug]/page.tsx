@@ -1,7 +1,8 @@
-import { notFound } from 'next/navigation'
-import { CustomMDX } from 'app/components/mdx'
-import { formatDate, getBlogPosts } from 'app/blog/utils'
-import { baseUrl } from 'app/sitemap'
+import {notFound} from 'next/navigation'
+import { CustomMDX } from 'app/components/mdx/mdx'
+
+import {baseUrl} from '../../const/const'
+import {formatDate, getBlogPosts} from "../utils";
 
 export async function generateStaticParams() {
   let posts = getBlogPosts()
@@ -11,11 +12,12 @@ export async function generateStaticParams() {
   }))
 }
 
-export function generateMetadata({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug)
+export async function generateMetadata(props: { params: PromiseLike<{ slug: any; }> | { slug: any; }; }) {
+  const paramsData = await props.params
+  let post = getBlogPosts().find((post) => post.slug === paramsData.slug)
   if (!post) {
-    // @ts-ignore
-    return
+      return notFound()
+
   }
 
   let {
@@ -24,6 +26,7 @@ export function generateMetadata({ params }) {
     summary: description,
     image,
   } = post.metadata
+
   let ogImage = image
     ? image
     : `${baseUrl}/og?title=${encodeURIComponent(title)}`
@@ -52,8 +55,9 @@ export function generateMetadata({ params }) {
   }
 }
 
-export default function Blog({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug)
+export default async function Page(props: { params: PromiseLike<{ slug: any; }> | { slug: any; }; }) {
+  const { slug } = await props.params
+  let post = getBlogPosts().find((post) => post.slug === slug)
 
   if (!post) {
     notFound()

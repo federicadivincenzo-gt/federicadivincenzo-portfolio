@@ -1,4 +1,5 @@
-import { baseUrl } from 'app/sitemap'
+import {baseUrl} from "./const/const";
+
 
 export default function robots() {
   return {
