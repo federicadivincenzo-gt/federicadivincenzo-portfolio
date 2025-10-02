@@ -1,6 +1,7 @@
 import Grid from "./components/grid/grid";
 import Card from "./components/card/card";
 import {HeroCard} from "./components/card/hero-card/hero-card";
+import {PostsCard} from "./components/card/posts-card/posts-card";
 
 export default function Page() {
   return (
@@ -13,7 +14,7 @@ export default function Page() {
                 <Card>test</Card>
             </div>
             <div className="col-span-1 row-span-2 flex flex-col">
-                <Card styles="grow">testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest</Card>
+                <PostsCard/>
                 <Card>test</Card>
             </div>
 
