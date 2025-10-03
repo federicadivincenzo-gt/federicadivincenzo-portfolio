@@ -40,7 +40,7 @@ export const Button = ({children, variant, color, url, onClick, noStyle = false,
 
     if (url) {
         return (
-            <Link href={url} className={`${noStyle || baseStyle}`}>
+            <Link href={url} className={classNames(`${noStyle || baseStyle}`, accessibleSizing, variantClasses["outline"], borderClasses["square"], "hover:font-medium" )}>
                 {children}
             </Link>
         );

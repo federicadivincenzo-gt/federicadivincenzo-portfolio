@@ -20,7 +20,7 @@ export default function Card({ children, corner = null, styles }: CardProps) {
 
     return (
         <div tabIndex={0} role="article" className={`${styles ? styles : ''}  relative rounded-[calc(var(--radius-lg)+1px)] shadow-sm `}>
-            <div className={`absolute inset-px rounded-lg  ${cornerClass} bg-[#808080]/5 border border-[#FFFFFF]/40 `}></div>
+            <div className={`absolute inset-px rounded-lg  ${cornerClass} bg-transparent border border-[#FFFFFF]/40 `}></div>
             <div className={`relative flex h-full flex-col overflow-hidden p-3 rounded-[calc(var(--radius-lg)+1px)] ${cornerClass}`}>
                 {children}
             </div>
