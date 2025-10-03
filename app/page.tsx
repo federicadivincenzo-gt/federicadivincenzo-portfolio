@@ -6,7 +6,7 @@ import {Button} from "./components/button/button";
 
 export default function Page() {
   return (
-    <section>
+    <section className="grow">
         <Grid>
             <div className="col-span-2">
                 <HeroCard />

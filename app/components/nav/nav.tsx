@@ -9,7 +9,7 @@ export function Navbar() {
           id="nav"
         >
           <div className="flex flex-row space-x-0 pr-10 items-center justify-between w-full">
-            <Link href="/" >{'<FEDERICA />'}</Link>
+            <Link href="/" className="ml-4">{'<FEDERICA />'}</Link>
             <div className="hidden md:block">
                 <Link href="/blog" className="ml-4">blog</Link>
                 <Link href="/projects" className="ml-4">projects</Link>
