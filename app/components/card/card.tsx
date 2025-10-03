@@ -19,9 +19,9 @@ export default function Card({ children, corner = null, styles }: CardProps) {
     const cornerClass = corner ? cornerClasses[corner] : '';
 
     return (
-        <div className={`${styles ? styles : ''} bg-[#f6f6f6] `}>
-            <div className={`inset-px rounded-lg bg-[#f6f6f6] ${cornerClass}`}></div>
-            <div className={`border relative flex h-full flex-col overflow-hidden p-3 rounded-[calc(var(--radius-lg)+1px)] ${cornerClass}`}>
+        <div tabIndex={0} role="article" className={`${styles ? styles : ''}  relative rounded-[calc(var(--radius-lg)+1px)] shadow-sm `}>
+            <div className={`absolute inset-px rounded-lg  ${cornerClass} bg-[#808080]/5 border border-[#FFFFFF]/40 `}></div>
+            <div className={`relative flex h-full flex-col overflow-hidden p-3 rounded-[calc(var(--radius-lg)+1px)] ${cornerClass}`}>
                 {children}
             </div>
             <div className={`pointer-events-none absolute inset-px rounded-lg ring-1 shadow-sm ring-black/5 ${cornerClass}`}></div>

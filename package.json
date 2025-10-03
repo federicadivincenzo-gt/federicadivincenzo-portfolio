@@ -13,6 +13,7 @@
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
     "axios": "^1.12.2",
+    "classnames": "^2.5.1",
     "geist": "1.5.1",
     "next": "15.6.0-canary.39",
     "next-mdx-remote": "^5.0.0",
